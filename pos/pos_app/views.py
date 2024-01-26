@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, viewsets
 from rest_framework import viewsets
 from .models import Product, Customer, Sale, SaleItem, User
 from .serializer import ProductSerializer, CustomerSerializer, SaleSerializer, SaleItemSerializer, UserSerializer
@@ -23,3 +23,8 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+def frontend(request):
+    context ={
+      'title':'some frontend title'
+    }
+    return render(request, 'frontend.html', context)
